@@ -15,7 +15,6 @@ import {
 export default function ContactPage() {
   const { language } = useLanguage();
   const isAz = language === "AZ";
-  const mapKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
   return (
     <main>
@@ -79,31 +78,21 @@ export default function ContactPage() {
                 {isAz ? "BİZİ HARADA TAPARSAN?" : "FIND US"}
               </p>
               <h2 className="text-3xl font-black text-white">
-                {isAz ? "Gəl, tanış olaq." : "Come say hello."}
+                {isAz ? "Gəlin, tanış olaq." : "Come say hello."}
               </h2>
             </div>
             <div className="relative min-h-[400px] flex-1 bg-ivory">
-              {mapKey ? (
-                <iframe
-                  title="Dərsiva location map"
-                  className="absolute inset-0 h-full w-full border-0"
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=${mapKey}&q=40.3777,49.8920&zoom=15`}
-                />
-              ) : (
-                <div className="flex h-full min-h-[400px] flex-col items-center justify-center p-8 text-center">
-                  <MapPin size={38} className="text-orange" />
-                  <p className="mt-4 font-bold text-navy">{isAz ? "Bakı, Azərbaycan" : "Baku, Azerbaijan"}</p>
-                  <p className="mt-2 max-w-xs text-sm leading-6 text-navy/55">
-                    {isAz ? "Demo məkan. Xəritəni aktivləşdirmək üçün API açarı əlavə et." : "Demo location. Add an API key to enable the map."}
-                  </p>
-                </div>
-              )}
+              <iframe
+                title="Nizami Ganjavi Park map"
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25068.579799271403!2d49.8861222723843!3d40.382134491785045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307cdc8ca532db%3A0x4ac6f7062bd59f75!2sNizami%20Ganjavi%20Park!5e1!3m2!1sen!2saz!4v1794206098909!5m2!1sen!2saz"
+              />
             </div>
-            <a href="https://www.google.com/maps?q=40.3777,49.8920" target="_blank" rel="noreferrer" className="flex items-center justify-between p-5 text-xs text-white/55 hover:text-orange">
-              {isAz ? "Bakı, Azərbaycan" : "Baku, Azerbaijan"}
+            <a href="https://www.google.com/maps/search/?api=1&query=Nizami+Ganjavi+Park%2C+Baku" target="_blank" rel="noreferrer" className="flex items-center justify-between p-5 text-xs text-white/55 hover:text-orange">
+              {isAz ? "Nizami Gəncəvi parkı, Bakı" : "Nizami Ganjavi Park, Baku"}
               <span className="flex items-center gap-1 font-bold">{isAz ? "Xəritədə aç" : "Open map"} <ArrowUpRight size={15} /></span>
             </a>
           </div>
